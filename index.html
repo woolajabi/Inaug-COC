@@ -3,135 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catering Master Selector</title>
+    <title>Executive Catering Selector</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background-color: #f4f7f6; padding-bottom: 150px; font-family: 'Segoe UI', sans-serif; }
-        .container { max-width: 900px; }
-        .card { border: none; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .category-header { background: #2c3e50; color: white; padding: 12px; border-radius: 12px 12px 0 0; font-weight: bold; }
-        .sub-cat { font-weight: bold; color: #007bff; border-bottom: 1px solid #eee; margin-top: 15px; padding-bottom: 5px; text-transform: uppercase; font-size: 0.8rem; }
-        .item-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px dashed #f1f1f1; }
-        .price-text { font-size: 0.8rem; color: #6c757d; }
-        .sticky-footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 20px; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); z-index: 1000; text-align: center; }
-        .btn-whatsapp { background-color: #25D366; color: white; font-weight: bold; padding: 12px 40px; border-radius: 50px; border: none; font-size: 1.1rem; }
-        .total-box { font-size: 1.3rem; font-weight: bold; color: #2c3e50; margin-bottom: 5px; }
+        body { background-color: #f0f2f5; padding-bottom: 160px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .container { max-width: 1000px; }
+        .card { border: none; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); margin-bottom: 30px; overflow: hidden; }
+        .category-header { background: linear-gradient(135deg, #2c3e50, #4ca1af); color: white; padding: 18px; font-weight: bold; font-size: 1.2rem; }
+        .sub-cat { font-weight: 800; color: #0d6efd; border-bottom: 2px solid #e9ecef; margin: 25px 0 12px 0; padding-bottom: 5px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+        .item-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #f8f9fa; transition: background 0.2s; }
+        .item-row:hover { background-color: #f1f8ff; }
+        .price-info { font-size: 0.85rem; color: #6c757d; font-family: monospace; }
+        .sticky-footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 25px; box-shadow: 0 -10px 30px rgba(0,0,0,0.1); z-index: 1000; text-align: center; }
+        .btn-whatsapp { background-color: #25D366; color: white; font-weight: bold; padding: 15px 60px; border-radius: 50px; border: none; font-size: 1.2rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+        .grand-total-text { font-size: 1.8rem; font-weight: 900; color: #1a1a1a; margin-bottom: 5px; }
+        .badge-qty { background: #e7f3ff; color: #0d6efd; padding: 2px 8px; border-radius: 5px; font-weight: bold; margin-left: 10px; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-<div class="container mt-4">
-    <div class="text-center mb-4">
-        <h1 class="fw-bold">Catering Order Form</h1>
-        <p class="text-muted">Part 2: 200 Pax/Station | Part 3: Per Excel Quantities</p>
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="fw-black display-5">Event Menu Selection</h1>
+        <p class="text-secondary">Please select your preferred options for the upcoming function.</p>
     </div>
 
     <form id="menuForm">
-        <!-- PART 1: BUFFET -->
+        <!-- PART 1: BUFFET (Continental Delight) -->
         <div class="card">
             <div class="category-header">PART 1: BUFFET 1-2 ($7/PAX)</div>
-            <div class="card-body">
-                <div class="sub-cat">Rice & Noodle (Select 1)</div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="rice" value="Rainbow Fried Rice(V)"> Rainbow Fried Rice(V)</div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="rice" value="Mixed Grain Rice(V)"> Mixed Grain Rice(V)</div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="rice" value="Sin Chow Bee Hoon(V)"> Sin Chow Bee Hoon(V)</div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="rice" value="Thai Pineapple Fried Rice"> Thai Pineapple Fried Rice</div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="rice" value="Nonya Fried Mee Siam"> Nonya Fried Mee Siam</div>
+            <div class="card-body px-4">
+                <div class="sub-cat">Rice and Noodle (Pick 1)</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="rice" value="Rainbow Fried Rice(V)"> Rainbow Fried Rice(V)</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="rice" value="Mixed Grain Rice(V)"> Mixed Grain Rice(V)</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="rice" value="Sin Chow Bee Hoon(V)"> Sin Chow Bee Hoon(V)</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="rice" value="Butter Raisin Rice(V)"> Butter Raisin Rice(V)</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="rice" value="Thai Pineapple Fried Rice"> Thai Pineapple Fried Rice</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="rice" value="Mushroom Fried Rice(V)"> Mushroom Fried Rice(V)</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="rice" value="Nonya Fried Mee Siam"> Nonya Fried Mee Siam</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="rice" value="Baked Tomato Rice(V)"> Baked Tomato Rice(V)</div>
+                    </div>
+                </div>
 
-                <div class="sub-cat">Vegetable / Tofu (Select 1)</div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="veg" value="Curry Mixed Vegetables"> Curry Mixed Vegetables</div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="veg" value="Mapo Tofu"> Mapo Tofu</div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="veg" value="Thai Style Fried Beancurd"> Thai Style Fried Beancurd</div>
+                <div class="sub-cat">Vegetable, Egg & Soy (Pick 1)</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="veg" value="Curry Mixed Vegetables"> Curry Mixed Vegetables</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="veg" value="Mapo Tofu"> Mapo Tofu</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="veg" value="Onion Omelette"> Onion Omelette</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="veg" value="Thai Style Fried Beancurd"> Thai Style Fried Beancurd</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="veg" value="Braised Beancurd w/ Mushroom"> Braised Beancurd w/ Mushroom</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="veg" value="Stir Fried Cabbage with Carrot"> Stir Fried Cabbage w/ Carrot</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="veg" value="Lor Han Chye(V)"> Lor Han Chye(V)</div>
+                    </div>
+                </div>
 
-                <div class="sub-cat">Meat & Fish (Select 1 each)</div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="meat" value="Honey Glazed Chicken"> Honey Glazed Chicken</div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="fish" value="Sambal Fish Fillet"> Sambal Fish Fillet</div>
+                <div class="sub-cat">Poultry and Meat (Pick 1)</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="meat" value="Curry Chicken"> Curry Chicken</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="meat" value="Honey Glazed Chicken"> Honey Glazed Chicken</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="meat" value="Baked Teriyaki Chicken"> Baked Teriyaki Chicken</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="meat" value="Black Pepper Chicken"> Black Pepper Chicken</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="meat" value="Prawn Paste Chicken"> Prawn Paste Chicken</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="meat" value="Lemon Chicken"> Lemon Chicken</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="meat" value="Sweet & Sour Chicken"> Sweet & Sour Chicken</div>
+                    </div>
+                </div>
+
+                <div class="sub-cat">Fish and Seafood (Pick 1)</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="fish" value="Assam Fish with Nanas"> Assam Fish with Nanas</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="fish" value="Black Pepper Fish"> Black Pepper Fish</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="fish" value="Sambal Fish Fillet"> Sambal Fish Fillet</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="fish" value="Oven Baked Fish w/ Lemon Butter"> Oven Baked Fish w/ Lemon Butter</div>
+                        <div class="form-check mb-2"><input class="form-check-input" type="radio" name="fish" value="Sweet & Sour Fish Fillet"> Sweet & Sour Fish Fillet</div>
+                    </div>
+                </div>
+
+                <div class="sub-cat">Beverages (Pick 1)</div>
+                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="drink" value="Orange Cordial"> Orange Cordial</div>
+                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="drink" value="Barley Cordial"> Barley Cordial</div>
+                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="drink" value="Iced Lemon Tea"> Iced Lemon Tea</div>
+                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="drink" value="Fruit Punch"> Fruit Punch</div>
             </div>
         </div>
 
         <!-- PART 2: LIVE STATIONS -->
         <div class="card">
-            <div class="category-header">PART 2: LIVE STATIONS (PICK EXACTLY 6)</div>
-            <div class="card-body">
-                <div class="alert alert-warning py-1 small">Note: Price = (Unit x 200) + Chef Fee</div>
+            <div class="category-header d-flex justify-content-between align-items-center">
+                PART 2: LIVE STATIONS (200 PAX PER OPTION)
+                <span class="badge bg-warning text-dark" style="font-size: 0.8rem;">Pick Exactly 6</span>
+            </div>
+            <div class="card-body px-4">
                 
                 <div class="sub-cat">Chinese Stations</div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Nonya Laksa" data-price="4.50" data-chef="100"> Nonya Laksa</div><div class="price-text">$4.50 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Hainanese Chicken Rice" data-price="5.50" data-chef="250"> Hainanese Chicken Rice</div><div class="price-text">$5.50 + $250</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Traditional Prawn Noodle" data-price="5.50" data-chef="100"> Traditional Prawn Noodle</div><div class="price-text">$5.50 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Chicken Curry Noodle" data-price="5.50" data-chef="100"> Chicken Curry Noodle</div><div class="price-text">$5.50 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Wok Fried Carrot Cake" data-price="4.50" data-chef="150"> Wok Fried Carrot Cake</div><div class="price-text">$4.50 + $150</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Wok Fried Hokkien Mee" data-price="5.50" data-chef="150"> Wok Fried Hokkien Mee</div><div class="price-text">$5.50 + $150</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Kueh Pie Tee" data-price="4.50" data-chef="100"> Kueh Pie Tee</div><div class="price-text">$4.50 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Popiah" data-price="5.00" data-chef="100"> Popiah</div><div class="price-text">$5.00 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Prawn Paste Chicken Wing" data-price="5.00" data-chef="150"> Prawn Paste Chicken</div><div class="price-text">$5.00 + $150</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Curry Chee Cheong Fan" data-price="4.00" data-chef="100"> Curry Chee Cheong Fan</div><div class="price-text">$4.00 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Chinese Rojak" data-price="4.50" data-chef="100"> Chinese Rojak</div><div class="price-text">$4.50 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Chicken Kong Bak Pau" data-price="5.00" data-chef="100"> Chicken Kong Bak Pau</div><div class="price-text">$5.00 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Chicken Lu Rou Rice" data-price="5.50" data-chef="100"> Chicken Lu Rou Rice</div><div class="price-text">$5.50 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Pekin Smoked Duck" data-price="6.50" data-chef="100"> Pekin Smoked Duck</div><div class="price-text">$6.50 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Mala Skewered Station" data-price="5.00" data-chef="100"> Mala Skewered Station</div><div class="price-text">$5.00 + $100</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Nonya Laksa" data-price="4.50" data-chef="100"> Nonya Laksa</div><div class="price-info">$4.50 + $100 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Hainanese Chicken Rice" data-price="5.50" data-chef="250"> Hainanese Chicken Rice</div><div class="price-info">$5.50 + $250 Chef/Asst</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Traditional Prawn Noodle" data-price="5.50" data-chef="100"> Traditional Prawn Noodle Soup</div><div class="price-info">$5.50 + $100 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Wok Fried Carrot Cake" data-price="4.50" data-chef="150"> Wok Fried Carrot Cake</div><div class="price-info">$4.50 + $150 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Wok Fried Hokkien Mee" data-price="5.50" data-chef="150"> Wok Fried Hokkien Mee</div><div class="price-info">$5.50 + $150 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Kueh Pie Tee" data-price="4.50" data-chef="100"> Kueh Pie Tee</div><div class="price-info">$4.50 + $100 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Popiah" data-price="5.00" data-chef="100"> Popiah</div><div class="price-info">$5.00 + $100 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Prawn Paste Chicken Wing" data-price="5.00" data-chef="150"> Prawn Paste Chicken Wing</div><div class="price-info">$5.00 + $150 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Chinese Rojak" data-price="4.50" data-chef="100"> Chinese Rojak</div><div class="price-info">$4.50 + $100 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Pekin Smoked Duck" data-price="6.50" data-chef="100"> Pekin Smoked Duck</div><div class="price-info">$6.50 + $100 Chef</div></div>
 
-                <div class="sub-cat">Malay & Indian Stations</div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Nasi Lemak Stall" data-price="5.50" data-chef="100"> Nasi Lemak Stall</div><div class="price-text">$5.50 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Mee Rebus" data-price="4.50" data-chef="100"> Mee Rebus</div><div class="price-text">$4.50 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Mee Siam" data-price="4.00" data-chef="100"> Mee Siam with Gravy</div><div class="price-text">$4.00 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Grilled Chicken Satay" data-price="5.00" data-chef="100"> Chicken Satay</div><div class="price-text">$5.00 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Lontong Stall" data-price="4.00" data-chef="100"> Lontong Stall</div><div class="price-text">$4.00 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Mee Soto" data-price="4.50" data-chef="100"> Mee Soto</div><div class="price-text">$4.50 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Ramly Burger" data-price="6.50" data-chef="250"> Ramly Burger</div><div class="price-text">$6.50 + $250</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Chicken Nasi Briyani" data-price="6.00" data-chef="100"> Chicken Nasi Briyani</div><div class="price-text">$6.00 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Roti Prata" data-price="4.00" data-chef="100"> Roti Prata</div><div class="price-text">$4.00 + $100</div></div>
+                <div class="sub-cat">Malay & Indian</div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Nasi Lemak Stall" data-price="5.50" data-chef="100"> Nasi Lemak Stall</div><div class="price-info">$5.50 + $100 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Mee Rebus" data-price="4.50" data-chef="100"> Mee Rebus</div><div class="price-info">$4.50 + $100 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Grilled Chicken Satay" data-price="5.00" data-chef="100"> Grilled Chicken Satay</div><div class="price-info">$5.00 + $100 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Ramly Burger" data-price="6.50" data-chef="250"> Ramly Burger</div><div class="price-info">$6.50 + $250 Chef/Asst</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Chicken Nasi Briyani" data-price="6.00" data-chef="100"> Chicken Nasi Briyani</div><div class="price-info">$6.00 + $100 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Roti Prata" data-price="4.00" data-chef="100"> Roti Prata</div><div class="price-info">$4.00 + $100 Chef</div></div>
 
-                <div class="sub-cat">Desserts & Others</div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Chendol" data-price="4.00" data-chef="100"> Chendol</div><div class="price-text">$4.00 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Ice Kacang" data-price="4.00" data-chef="100"> Ice Kacang</div><div class="price-text">$4.00 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Churros" data-price="5.00" data-chef="150"> Churros (4pcs)</div><div class="price-text">$5.00 + $150</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Muah Chee" data-price="4.00" data-chef="100"> Muah Chee</div><div class="price-text">$4.00 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Belgium Waffle Ice Cream" data-price="5.00" data-chef="150"> Waffle Ice Cream</div><div class="price-text">$5.00 + $150</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Bing Tang Hu Lu" data-price="5.00" data-chef="150"> Bing Tang Hu Lu</div><div class="price-text">$5.00 + $150</div></div>
-
-                <div class="sub-cat">Premium Stations</div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Roasted Lamb Carving" data-price="8.50" data-chef="100"> Roasted Lamb Carving</div><div class="price-text">$8.50 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Beef Carving Station" data-price="8.50" data-chef="100"> Beef Carving Station</div><div class="price-text">$8.50 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Yakitori Station" data-price="5.50" data-chef="100"> Yakitori Station</div><div class="price-text">$5.50 + $100</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Roasted Spit of Lamb" data-price="13.00" data-chef="150"> Roasted Spit of Lamb</div><div class="price-text">$13.00 + $150</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Beef Don Souvide Egg" data-price="10.00" data-chef="150"> Beef Don Souvide Egg</div><div class="price-text">$10.00 + $150</div></div>
-                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Bubble Milk Tea" data-price="5.00" data-chef="100"> Bubble Milk Tea</div><div class="price-text">$5.00 + $100</div></div>
+                <div class="sub-cat">Desserts & Premium</div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Chendol" data-price="4.00" data-chef="100"> Chendol</div><div class="price-info">$4.00 + $100 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Churros" data-price="5.00" data-chef="150"> Churros (4pcs)</div><div class="price-info">$5.00 + $150 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Muah Chee" data-price="4.00" data-chef="100"> Muah Chee</div><div class="price-info">$4.00 + $100 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Belgium Waffle Ice Cream" data-price="5.00" data-chef="150"> Waffle Ice Cream</div><div class="price-info">$5.00 + $150 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Beef Carving Station" data-price="8.50" data-chef="100"> Beef Carving Station</div><div class="price-info">$8.50 + $100 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Roasted Spit of Lamb" data-price="13.00" data-chef="150"> Roasted Spit of Lamb</div><div class="price-info">$13.00 + $150 Chef</div></div>
+                <div class="item-row"><div><input class="form-check-input live-check" type="checkbox" value="Bubble Milk Tea" data-price="5.00" data-chef="100"> Bubble Milk Tea</div><div class="price-info">$5.00 + $100 Chef</div></div>
             </div>
         </div>
 
-        <!-- PART 3: ALCOHOL & OTHERS -->
+        <!-- PART 3: EXCEL ITEMS -->
         <div class="card">
-            <div class="category-header">PART 3: ALCOHOL, DRINKS & MEATS</div>
-            <div class="card-body">
-                <div class="sub-cat">Beers & Soju (Cartons)</div>
-                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Hoegaarden White" data-cost="63" data-qty="4"> Hoegaarden White</div><div class="price-text">$63.00 x 4</div></div>
-                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Blanc" data-cost="113" data-qty="4"> Blanc</div><div class="price-text">$113.00 x 4</div></div>
-                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Tiger" data-cost="48" data-qty="4"> Tiger</div><div class="price-text">$48.00 x 4</div></div>
-                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Heineken" data-cost="57" data-qty="4"> Heineken</div><div class="price-text">$57.00 x 4</div></div>
-                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Soju Green Grape" data-cost="160" data-qty="3"> Soju Green Grape</div><div class="price-text">$160.00 x 3</div></div>
+            <div class="category-header">PART 3: ALCOHOL, DRINKS & ROASTED MEATS</div>
+            <div class="card-body px-4">
+                <div class="sub-cat">Beers & Soju</div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Hoegaarden White" data-cost="63" data-qty="4"> Hoegaarden White <span class="badge-qty">x4</span></div><div class="price-info">$63.00/ctn</div></div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Blanc 500ml" data-cost="113" data-qty="4"> Blanc 500ml <span class="badge-qty">x4</span></div><div class="price-info">$113.00/ctn</div></div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Sapporo 330ml" data-cost="73" data-qty="4"> Sapporo 330ml <span class="badge-qty">x4</span></div><div class="price-info">$73.00/ctn</div></div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Tiger 320ml" data-cost="48" data-qty="4"> Tiger 320ml <span class="badge-qty">x4</span></div><div class="price-info">$48.00/ctn</div></div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Heineken 320ml" data-cost="57" data-qty="4"> Heineken 320ml <span class="badge-qty">x4</span></div><div class="price-info">$57.00/ctn</div></div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Soju Green Grape" data-cost="160" data-qty="3"> Soju Green Grape <span class="badge-qty">x3</span></div><div class="price-info">$160.00/set</div></div>
 
-                <div class="sub-cat">Beer Taps & Kegs</div>
-                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Beer Tap Rental" data-cost="98" data-qty="2"> Tap Rental (2 Taps)</div><div class="price-text">$98.00 x 2 days</div></div>
-                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Sapporo Keg 20L" data-cost="358" data-qty="1"> Sapporo Keg 20L</div><div class="price-text">$358.00</div></div>
+                <div class="sub-cat">Kegs and Taps</div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Beer Tap Rental" data-cost="98" data-qty="2"> Beer Tap Rental (2 taps) <span class="badge-qty">2 days</span></div><div class="price-info">$98.00/day</div></div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Sapporo Keg 20L" data-cost="358" data-qty="1"> Sapporo Keg 20L <span class="badge-qty">x1</span></div><div class="price-info">$358.00</div></div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Hoegaarden White Keg" data-cost="368" data-qty="1"> Hoegaarden White Keg 20L <span class="badge-qty">x1</span></div><div class="price-info">$368.00</div></div>
 
-                <div class="sub-cat">Drinks</div>
-                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Green Tea" data-cost="10.50" data-qty="4"> Green Tea</div><div class="price-text">$10.50 x 4</div></div>
-                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Coke Zero" data-cost="14.50" data-qty="4"> Coke Zero</div><div class="price-text">$14.50 x 4</div></div>
+                <div class="sub-cat">Soft Drinks</div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Green Tea" data-cost="10.50" data-qty="4"> Green Tea Packets <span class="badge-qty">x4</span></div><div class="price-info">$10.50/ctn</div></div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Coke Zero" data-cost="14.50" data-qty="4"> Coke Zero Cans <span class="badge-qty">x4</span></div><div class="price-info">$14.50/ctn</div></div>
 
-                <div class="sub-cat">Other Food</div>
-                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Char Shao" data-cost="26" data-qty="10"> Char Shao</div><div class="price-text">$26/kg x 10kg</div></div>
-                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Roasted Pork" data-cost="26" data-qty="10"> Roasted Pork</div><div class="price-text">$26/kg x 10kg</div></div>
-                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Roasted Duck" data-cost="18" data-qty="10"> Roasted Duck</div><div class="price-text">$18/kg x 10kg</div></div>
+                <div class="sub-cat">Roasted Meats</div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Char Shao" data-cost="26" data-qty="10"> Char Shao <span class="badge-qty">10kg</span></div><div class="price-info">$26/kg</div></div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Roasted Pork" data-cost="26" data-qty="10"> Roasted Pork <span class="badge-qty">10kg</span></div><div class="price-info">$26/kg</div></div>
+                <div class="item-row"><div><input class="form-check-input p3-check" type="checkbox" value="Roasted Duck" data-cost="18" data-qty="10"> Roasted Duck <span class="badge-qty">10kg</span></div><div class="price-info">$18/kg</div></div>
             </div>
         </div>
     </form>
 </div>
 
 <div class="sticky-footer">
-    <div class="total-box">Grand Total: <span id="grandTotal">$0.00</span></div>
-    <button type="button" class="btn-whatsapp" onclick="sendWhatsApp()">Confirm & Send via WhatsApp 💬</button>
+    <div class="grand-total-text" id="grandTotal">$0.00</div>
+    <p class="text-muted small mb-3">Est. Grand Total (Part 2 + Part 3)</p>
+    <button type="button" class="btn-whatsapp" onclick="sendWhatsApp()">Submit Preferences via WhatsApp 💬</button>
 </div>
 
 <script>
@@ -140,13 +181,13 @@
     const p3Checks = document.querySelectorAll('.p3-check');
     const grandDisplay = document.getElementById('grandTotal');
 
-    // Live Station Restriction (Exactly 6)
+    // Rule: Exactly 6 Live Stations
     liveChecks.forEach(cb => {
         cb.addEventListener('change', () => {
             const count = document.querySelectorAll('.live-check:checked').length;
             if (count > 6) {
                 cb.checked = false;
-                alert("You can only select exactly 6 Live Stations.");
+                alert("Please select exactly 6 live stations.");
             }
             updateTotal();
         });
@@ -156,11 +197,11 @@
 
     function updateTotal() {
         let total = 0;
-        // Calculate Part 2
+        // Part 2
         document.querySelectorAll('.live-check:checked').forEach(i => {
             total += (parseFloat(i.dataset.price) * pax2) + parseFloat(i.dataset.chef);
         });
-        // Calculate Part 3
+        // Part 3
         document.querySelectorAll('.p3-check:checked').forEach(i => {
             total += parseFloat(i.dataset.cost) * parseFloat(i.dataset.qty);
         });
@@ -168,35 +209,41 @@
     }
 
     function sendWhatsApp() {
-        const myPhoneNumber = "6597405060"; // CHANGE TO YOUR NUMBER
-        const selectedLive = document.querySelectorAll('.live-check:checked');
+        const myPhoneNumber = "65XXXXXXXX"; // <--- UPDATE TO YOUR NUMBER
         
-        if (selectedLive.length !== 6) {
-            alert("Please select exactly 6 live stations to submit.");
+        const selLive = document.querySelectorAll('.live-check:checked');
+        if (selLive.length !== 6) {
+            alert("Please select exactly 6 live stations before submitting.");
             return;
         }
 
-        let msg = "*CATERING ORDER SUMMARY*%0A%0A";
-        msg += "*[Part 1: Buffet]*%0A";
-        msg += "- Rice: " + (document.querySelector('input[name="rice"]:checked')?.value || "N/A") + "%0A%0A";
+        let msg = "*OFFICE CATERING PREFERENCES*%0A%0A";
+        
+        msg += "*[Part 1: Buffet Selection]*%0A";
+        msg += "- Rice: " + (document.querySelector('input[name="rice"]:checked')?.value || "N/A") + "%0A";
+        msg += "- Veg/Egg: " + (document.querySelector('input[name="veg"]:checked')?.value || "N/A") + "%0A";
+        msg += "- Meat: " + (document.querySelector('input[name="meat"]:checked')?.value || "N/A") + "%0A";
+        msg += "- Fish: " + (document.querySelector('input[name="fish"]:checked')?.value || "N/A") + "%0A";
+        msg += "- Drink: " + (document.querySelector('input[name="drink"]:checked')?.value || "N/A") + "%0A%0A";
 
         msg += "*[Part 2: Live Stations (200pax)]*%0A";
         let p2Sum = 0;
-        selectedLive.forEach(i => {
+        selLive.forEach(i => {
             let cost = (parseFloat(i.dataset.price) * pax2) + parseFloat(i.dataset.chef);
             p2Sum += cost;
             msg += `- ${i.value}: $${cost.toLocaleString()}%0A`;
         });
 
-        msg += "%0A*[Part 3: Alcohol & Others]*%0A";
+        msg += "%0A*[Part 3: Alcohol & Add-ons]*%0A";
         let p3Sum = 0;
         document.querySelectorAll('.p3-check:checked').forEach(i => {
             let cost = parseFloat(i.dataset.cost) * parseFloat(i.dataset.qty);
             p3Sum += cost;
-            msg += `- ${i.value} (x${i.dataset.qty}): $${cost.toLocaleString()}%0A`;
+            msg += `- ${i.value} (Qty ${i.dataset.qty}): $${cost.toLocaleString()}%0A`;
         });
 
         msg += "%0A*GRAND TOTAL: $" + (p2Sum + p3Sum).toLocaleString() + "*";
+        
         window.open(`https://wa.me/${myPhoneNumber}?text=${msg}`, '_blank');
     }
 </script>
