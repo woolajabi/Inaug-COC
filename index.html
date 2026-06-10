@@ -1,180 +1,206 @@
-code
-Html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Selection Form</title>
+    <title>Menu Selection & Estimator</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background-color: #f4f7f6; padding: 20px; font-family: sans-serif; }
+        body { background-color: #f4f7f6; padding-bottom: 100px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         .card { margin-bottom: 20px; border-radius: 12px; border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        .header-section { text-align: center; margin-bottom: 30px; color: #2c3e50; }
-        .category-title { background-color: #007bff; color: white; padding: 12px; border-radius: 8px; margin-top: 30px; margin-bottom: 15px; }
-        .sub-cat { font-weight: bold; color: #007bff; margin-top: 15px; border-bottom: 1px solid #dee2e6; padding-bottom: 5px; }
-        .sticky-bottom { position: sticky; bottom: 20px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .btn-whatsapp { background-color: #25D366; color: white; font-weight: bold; padding: 15px 40px; border-radius: 50px; font-size: 1.2rem; border: none; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
-        .counter-badge { background: #ffc107; color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold; }
+        .category-title { background-color: #2c3e50; color: white; padding: 12px; border-radius: 8px; margin-top: 30px; }
+        .sub-cat { font-weight: bold; color: #007bff; margin-top: 15px; border-bottom: 1px solid #eee; }
+        .price-tag { font-size: 0.85rem; color: #6c757d; font-style: italic; }
+        
+        /* Sticky Footer for Totaling */
+        .total-bar {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: #fff; padding: 15px;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            z-index: 1000; display: flex; flex-direction: column; align-items: center;
+        }
+        .btn-whatsapp { background-color: #25D366; color: white; font-weight: bold; padding: 12px 30px; border-radius: 50px; border: none; }
+        .total-amount { font-size: 1.4rem; font-weight: bold; color: #2c3e50; }
     </style>
 </head>
 <body>
 
-<div class="container" style="max-width: 800px;">
-    <div class="header-section">
-        <h1>Event Catering Selection</h1>
-        <p>Select your preferences below and send them to me via WhatsApp.</p>
+<div class="container" style="max-width: 800px; padding-top: 20px;">
+    <div class="text-center mb-4">
+        <h1>Catering Selector</h1>
+        <p class="text-muted">Live Station Quantity: <strong>200 pax per station</strong></p>
     </div>
 
     <form id="menuForm">
-        <!-- PART 1: BUFFET -->
-        <h2 class="category-title">Part 1: Buffet Selection ($7/pax)</h2>
-        <p class="text-muted small">Please select 1 item per category.</p>
-        
+        <!-- PART 1: BUFFET (Standard $7/pax) -->
+        <h2 class="category-title">Part 1: Buffet 1-2 ($7/pax)</h2>
         <div class="card p-3">
             <div class="sub-cat">Rice & Noodle</div>
             <div class="form-check"><input class="form-check-input" type="radio" name="rice" value="Rainbow Fried Rice(V)"> Rainbow Fried Rice(V)</div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="rice" value="Mixed Grain Rice(V)"> Mixed Grain Rice(V)</div>
             <div class="form-check"><input class="form-check-input" type="radio" name="rice" value="Sin Chow Bee Hoon(V)"> Sin Chow Bee Hoon(V)</div>
             <div class="form-check"><input class="form-check-input" type="radio" name="rice" value="Thai Pineapple Fried Rice"> Thai Pineapple Fried Rice</div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="rice" value="Nonya Fried Mee Siam"> Nonya Fried Mee Siam</div>
-
-            <div class="sub-cat">Vegetable / Tofu</div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="veg" value="Curry Mixed Vegetables"> Curry Mixed Vegetables</div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="veg" value="Mapo Tofu"> Mapo Tofu</div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="veg" value="Thai Style Fried Beancurd"> Thai Style Fried Beancurd</div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="veg" value="Stir Fried Cabbage with Carrot"> Stir Fried Cabbage with Carrot</div>
-
-            <div class="sub-cat">Poultry & Meat</div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="meat" value="Curry Chicken"> Curry Chicken</div>
+            
+            <div class="sub-cat">Poultry / Fish</div>
             <div class="form-check"><input class="form-check-input" type="radio" name="meat" value="Honey Glazed Chicken"> Honey Glazed Chicken</div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="meat" value="Prawn Paste Chicken"> Prawn Paste Chicken</div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="meat" value="Baked Teriyaki Chicken"> Baked Teriyaki Chicken</div>
-
-            <div class="sub-cat">Fish & Seafood</div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="fish" value="Assam Fish with Nanas"> Assam Fish with Nanas</div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="fish" value="Black Pepper Fish"> Black Pepper Fish</div>
             <div class="form-check"><input class="form-check-input" type="radio" name="fish" value="Sambal Fish Fillet"> Sambal Fish Fillet</div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="fish" value="Oven Baked Fish with Lemon Butter"> Oven Baked Fish with Lemon Butter</div>
         </div>
 
-        <!-- PART 2: LIVE STATIONS -->
-        <h2 class="category-title">Part 2: Live Stations</h2>
-        <div class="alert alert-info">Please select <strong>exactly 6</strong> items.</div>
-
+        <!-- PART 2: LIVE STATIONS (Calculating Section) -->
+        <h2 class="category-title">Part 2: Live Stations (Pick exactly 6)</h2>
         <div class="card p-3">
-            <div class="sub-cat text-danger">Chinese Stations</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Nonya Laksa"> Nonya Laksa</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Hainanese Chicken Rice"> Hainanese Chicken Rice</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Traditional Prawn Noodle Soup"> Traditional Prawn Noodle Soup</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Chicken Curry Noodle"> Chicken Curry Noodle</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Wok Fried Carrot Cake"> Wok Fried Carrot Cake (Black/White)</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Wok Fried Hokkien Mee"> Wok Fried Hokkien Mee</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Kueh Pie Tee"> Kueh Pie Tee</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Popiah"> Popiah</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Prawn Paste Chicken Wing"> Prawn Paste Chicken Wing w/ Keropok</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Curry Chee Cheong Fan"> Curry Chee Cheong Fan</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Chinese Rojak"> Chinese Rojak</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Chicken Kong Bak Pau"> Chicken Kong Bak Pau</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Chicken Lu Rou Rice"> Chicken "Lu Rou" Rice</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Pekin Smoked Duck"> Pekin Smoked Duck</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Mala Skewered Station"> Mala Skewered Station</div>
+            
+            <div class="sub-cat">Chinese</div>
+            <!-- Logic: data-price = unit price, data-chef = chef fee from your PDF -->
+            <div class="form-check d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <input class="form-check-input live-check" type="checkbox" value="Nonya Laksa" data-price="4.50" data-chef="100">
+                    <label class="form-check-label">Nonya Laksa</label>
+                </div>
+                <span class="price-tag">$4.50 + $100 Chef</span>
+            </div>
 
-            <div class="sub-cat text-danger">Malay & Indian Stations</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Nasi Lemak Stall"> Nasi Lemak Stall</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Mee Rebus"> Mee Rebus</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Mee Siam with Gravy"> Mee Siam with Gravy</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Grilled Chicken Satay"> Grilled Chicken Satay (3 sticks/pax)</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Lontong Stall"> Lontong Stall</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Mee Soto"> Mee Soto</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Ramly Burger"> Ramly Burger</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Chicken Nasi Briyani"> Chicken Nasi Briyani</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Roti Prata"> Roti Prata</div>
+            <div class="form-check d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <input class="form-check-input live-check" type="checkbox" value="Hainanese Chicken Rice" data-price="5.50" data-chef="250">
+                    <label class="form-check-label">Hainanese Chicken Rice</label>
+                </div>
+                <span class="price-tag">$5.50 + $250 Chef (Incl. Asst)</span>
+            </div>
 
-            <div class="sub-cat text-danger">Dessert & Beverage Stations</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Chendol"> Chendol</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Ice Kacang"> Ice Kacang</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Cheng Tng"> Cheng Tng</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Corn in Cup"> Corn in Cup</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Popcorn in Cup"> Popcorn in Cup</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Churros"> Churros (4pcs/pax)</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Nacho Chips w/ Cheese"> Nacho Chips w/ Cheese Dip</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Muah Chee"> Muah Chee</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Belgium Waffle"> Belgium Waffle</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Belgium Waffle Ice Cream"> Belgium Waffle Ice Cream</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Bing Tang Hu Lu"> Bing Tang Hu Lu (Strawberry/Grape)</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Bubble Milk Tea"> Bubble Milk Tea</div>
+            <div class="form-check d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <input class="form-check-input live-check" type="checkbox" value="Wok Fried Carrot Cake" data-price="4.50" data-chef="150">
+                    <label class="form-check-label">Wok Fried Carrot Cake</label>
+                </div>
+                <span class="price-tag">$4.50 + $150 Chef</span>
+            </div>
 
-            <div class="sub-cat text-danger">Premium & Specialty Stations</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Tempura Station"> Tempura Station (Prawn, Veg)</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Hot Dog Bun Live"> Hot Dog with Bun</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Roasted Lamb Carving"> Roasted Lamb Carving</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Beef Carving Live"> Beef Carving Live Station</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Yakitori Station"> Yakitori Live (2 sticks/pax)</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Chicken Kebab Wrap"> Chicken Kebab (Wrap)</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Roasted Spit of Lamb"> Roasted Spit of Lamb</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Beef Don Souvide Egg"> Beef Don with Souvide Egg</div>
-            <div class="form-check"><input class="form-check-input live-check" type="checkbox" value="Coco Cane / Sugar Cane"> Coco Cane / Sugar Cane</div>
-        </div>
+            <div class="sub-cat">Malay / Indian</div>
+            <div class="form-check d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <input class="form-check-input live-check" type="checkbox" value="Grilled Chicken Satay" data-price="5.00" data-chef="100">
+                    <label class="form-check-label">Grilled Chicken Satay (3 sticks)</label>
+                </div>
+                <span class="price-tag">$5.00 + $100 Chef</span>
+            </div>
 
-        <div class="sticky-bottom pb-4">
-            <div class="counter-badge">Selected: <span id="count">0</span> / 6</div>
-            <button type="button" class="btn-whatsapp" onclick="sendWhatsApp()">Submit to WhatsApp 💬</button>
+            <div class="form-check d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <input class="form-check-input live-check" type="checkbox" value="Ramly Burger" data-price="6.50" data-chef="250">
+                    <label class="form-check-label">Ramly Burger</label>
+                </div>
+                <span class="price-tag">$6.50 + $250 Chef (Incl. Asst)</span>
+            </div>
+
+            <div class="form-check d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <input class="form-check-input live-check" type="checkbox" value="Roti Prata" data-price="4.00" data-chef="100">
+                    <label class="form-check-label">Roti Prata</label>
+                </div>
+                <span class="price-tag">$4.00 + $100 Chef</span>
+            </div>
+
+            <div class="sub-cat">Dessert / Premium</div>
+            <div class="form-check d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <input class="form-check-input live-check" type="checkbox" value="Belgium Waffle Ice Cream" data-price="5.00" data-chef="150">
+                    <label class="form-check-label">Belgium Waffle Ice Cream</label>
+                </div>
+                <span class="price-tag">$5.00 + $150 Chef</span>
+            </div>
+
+            <div class="form-check d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <input class="form-check-input live-check" type="checkbox" value="Beef Carving Station" data-price="8.50" data-chef="100">
+                    <label class="form-check-label">Beef Carving Live Station</label>
+                </div>
+                <span class="price-tag">$8.50 + $100 Chef</span>
+            </div>
+
+            <div class="form-check d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <input class="form-check-input live-check" type="checkbox" value="Roasted Spit of Lamb" data-price="13.00" data-chef="150">
+                    <label class="form-check-label">Roasted Spit of Lamb</label>
+                </div>
+                <span class="price-tag">$13.00 + $150 Chef</span>
+            </div>
+
+            <div class="form-check d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <input class="form-check-input live-check" type="checkbox" value="Bubble Milk Tea" data-price="5.00" data-chef="100">
+                    <label class="form-check-label">Bubble Milk Tea</label>
+                </div>
+                <span class="price-tag">$5.00 + $100 Chef</span>
+            </div>
+            
+            <p class="mt-3 text-muted small">*Note: I have included a sampling of items above. You can add more following the same format.*</p>
         </div>
     </form>
 </div>
 
-<script>
-    const maxLive = 6;
-    const checkboxes = document.querySelectorAll('.live-check');
-    const counterDisplay = document.getElementById('count');
+<div class="total-bar">
+    <div class="mb-2">
+        <span class="text-muted">Part 2 Est. Total (6 x 200 pax): </span>
+        <span class="total-amount" id="displayTotal">$0.00</span>
+    </div>
+    <button type="button" class="btn-whatsapp" onclick="sendWhatsApp()">Send to WhatsApp 💬</button>
+</div>
 
-    // Handle the 6-item limit
+<script>
+    const checkboxes = document.querySelectorAll('.live-check');
+    const displayTotal = document.getElementById('displayTotal');
+    const pax = 200;
+
     checkboxes.forEach(cb => {
         cb.addEventListener('change', () => {
-            const checkedCount = document.querySelectorAll('.live-check:checked').length;
-            if (checkedCount > maxLive) {
+            const checked = document.querySelectorAll('.live-check:checked');
+            
+            // Limit to 6
+            if (checked.length > 6) {
                 cb.checked = false;
-                alert("You can only select up to 6 Live Stations.");
+                alert("Please select only 6 Live Stations.");
+                return;
             }
-            updateCounter();
+            calculateTotal();
         });
     });
 
-    function updateCounter() {
-        const checkedCount = document.querySelectorAll('.live-check:checked').length;
-        counterDisplay.innerText = checkedCount;
+    function calculateTotal() {
+        let total = 0;
+        document.querySelectorAll('.live-check:checked').forEach(item => {
+            let itemPrice = parseFloat(item.dataset.price);
+            let chefFee = parseFloat(item.dataset.chef);
+            total += (itemPrice * pax) + chefFee;
+        });
+        displayTotal.innerText = "$" + total.toLocaleString(undefined, {minimumFractionDigits: 2});
     }
 
     function sendWhatsApp() {
-        // --- CHANGE YOUR NUMBER HERE ---
-        const myPhoneNumber = "6597405060"; 
-
-        const checkedLive = document.querySelectorAll('.live-check:checked');
+        const myPhoneNumber = "6597405060"; // CHANGE TO YOUR NUMBER
+        const selectedLive = document.querySelectorAll('.live-check:checked');
         
-        // Basic Validation
-        if (checkedLive.length === 0) {
-            alert("Please select at least one live station!");
+        if (selectedLive.length !== 6) {
+            alert("Please select exactly 6 live stations to get an accurate quote.");
             return;
         }
 
-        let message = "*NEW CATERING PREFERENCES*%0A%0A";
+        let totalPart2 = 0;
+        let message = "*CATERING SELECTION*%0A%0A";
+        
+        message += "*[Part 1: Buffet]*%0A";
+        message += "- Rice: " + (document.querySelector('input[name="rice"]:checked')?.value || "N/A") + "%0A%0A";
 
-        // Buffet
-        message += "*[Buffet 1-2 Selection]*%0A";
-        message += "- Rice/Noodle: " + (document.querySelector('input[name="rice"]:checked')?.value || "Not selected") + "%0A";
-        message += "- Veg/Tofu: " + (document.querySelector('input[name="veg"]:checked')?.value || "Not selected") + "%0A";
-        message += "- Meat: " + (document.querySelector('input[name="meat"]:checked')?.value || "Not selected") + "%0A";
-        message += "- Fish: " + (document.querySelector('input[name="fish"]:checked')?.value || "Not selected") + "%0A%0A";
-
-        // Live Stations
-        message += "*[Live Stations (Selected 6)]*%0A";
-        checkedLive.forEach((item, index) => {
-            message += (index + 1) + ". " + item.value + "%0A";
+        message += "*[Part 2: Live Stations (200 pax each)]*%0A";
+        
+        selectedLive.forEach(item => {
+            let cost = (parseFloat(item.dataset.price) * pax) + parseFloat(item.dataset.chef);
+            totalPart2 += cost;
+            message += `- ${item.value} ($${cost.toLocaleString()})%0A`;
         });
 
-        const waLink = `https://wa.me/${myPhoneNumber}?text=${message}`;
-        window.open(waLink, '_blank');
+        message += "%0A*PART 2 TOTAL: $" + totalPart2.toLocaleString() + "*";
+
+        window.open(`https://wa.me/${myPhoneNumber}?text=${message}`, '_blank');
     }
 </script>
 
