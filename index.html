@@ -29,7 +29,7 @@
     </div>
 
     <form id="menuForm">
-        <!-- PART 1: BUFFET -->
+        <!-- PART 1: BUFFET (Continental Delight) -->
         <div class="card">
             <div class="category-header">PART 1: BUFFET 1-2 ($7/PAX)</div>
             <div class="card-body px-4">
@@ -139,7 +139,6 @@
             </div>
         </div>
 
-
         <!-- PART 3: EXCEL ITEMS -->
         <div class="card">
             <div class="category-header">PART 3: ALCOHOL, DRINKS & ROASTED MEATS</div>
@@ -173,7 +172,6 @@
     </form>
 </div>
 
-
 <div class="sticky-footer">
     <div class="grand-total-text" id="grandTotal">$0.00</div>
     <p class="text-muted small mb-3">Est. Grand Total (Part 2 + Part 3)</p>
@@ -182,25 +180,31 @@
 
 <script>
     const pax2 = 200;
+    const liveChecks = document.querySelectorAll('.live-check');
+    const p3Checks = document.querySelectorAll('.p3-check');
     const grandDisplay = document.getElementById('grandTotal');
 
-    document.addEventListener('change', updateTotal);
-
-    document.querySelectorAll('.live-check').forEach(cb => {
+    // Rule: Exactly 6 Live Stations
+    liveChecks.forEach(cb => {
         cb.addEventListener('change', () => {
             const count = document.querySelectorAll('.live-check:checked').length;
             if (count > 6) {
                 cb.checked = false;
                 alert("Please select exactly 6 live stations.");
             }
+            updateTotal();
         });
     });
 
+    p3Checks.forEach(cb => cb.addEventListener('change', updateTotal));
+
     function updateTotal() {
         let total = 0;
+        // Part 2
         document.querySelectorAll('.live-check:checked').forEach(i => {
             total += (parseFloat(i.dataset.price) * pax2) + parseFloat(i.dataset.chef);
         });
+        // Part 3
         document.querySelectorAll('.p3-check:checked').forEach(i => {
             total += parseFloat(i.dataset.cost) * parseFloat(i.dataset.qty);
         });
@@ -219,40 +223,41 @@
         let msg = "*OFFICE CATERING PREFERENCES*%0A%0A";
         
         msg += "*[Part 1: Buffet Selection]*%0A";
-        msg += "- Rice: " + (document.querySelector('input[name="rice"]:checked')?.value || "N/A") + "%0A";
-        msg += "- Veg/Egg: " + (document.querySelector('input[name="veg"]:checked')?.value || "N/A") + "%0A";
-        msg += "- Meat: " + (document.querySelector('input[name="meat"]:checked')?.value || "N/A") + "%0A";
-        msg += "- Fish: " + (document.querySelector('input[name="fish"]:checked')?.value || "N/A") + "%0A";
-        msg += "- Drink: " + (document.querySelector('input[name="drink"]:checked')?.value || "N/A") + "%0A%0A";
+        msg += "- Rice: " + encodeURIComponent(document.querySelector('input[name="rice"]:checked')?.value || "N/A") + "%0A";
+        msg += "- Veg/Egg: " + encodeURIComponent(document.querySelector('input[name="veg"]:checked')?.value || "N/A") + "%0A";
+        msg += "- Meat: " + encodeURIComponent(document.querySelector('input[name="meat"]:checked')?.value || "N/A") + "%0A";
+        msg += "- Fish: " + encodeURIComponent(document.querySelector('input[name="fish"]:checked')?.value || "N/A") + "%0A";
+        msg += "- Drink: " + encodeURIComponent(document.querySelector('input[name="drink"]:checked')?.value || "N/A") + "%0A%0A";
 
         msg += "*[Part 2: Live Stations (200pax)]*%0A";
         let p2Sum = 0;
         selLive.forEach(i => {
             let cost = (parseFloat(i.dataset.price) * pax2) + parseFloat(i.dataset.chef);
             p2Sum += cost;
-            msg += `- ${i.value}: $${cost.toLocaleString()}%0A`;
+            msg += "- " + encodeURIComponent(i.value) + ": $" + cost.toLocaleString() + "%0A";
         });
 
-        // --- AMENDED SECTION TO CAPTURE PART 3 ---
-        msg += "%0A*[Part 3: Alcohol & Add-ons]*%0A";
+        // FIXED: URL encoded "&" so the message doesn't cut off
+        msg += "%0A*[Part 3: Alcohol %26 Add-ons]*%0A";
         let p3Sum = 0;
         const selP3 = document.querySelectorAll('.p3-check:checked');
         
         if (selP3.length === 0) {
             msg += "None selected%0A";
         } else {
-            selP3.forEach(item => {
-                const cost = parseFloat(item.dataset.cost) * parseFloat(item.dataset.qty);
+            selP3.forEach(i => {
+                let cost = parseFloat(i.dataset.cost) * parseFloat(i.dataset.qty);
                 p3Sum += cost;
-                msg += `- ${item.value} (Qty ${item.dataset.qty}): $${cost.toLocaleString()}%0A`;
+                msg += "- " + encodeURIComponent(i.value) + " (Qty " + i.dataset.qty + "): $" + cost.toLocaleString() + "%0A";
             });
         }
 
         const grand = p2Sum + p3Sum;
         msg += "%0A*GRAND TOTAL: $" + grand.toLocaleString() + "*";
         
-        window.open(`https://wa.me/${myPhoneNumber}?text=${msg}`, '_blank');
+        window.open("https://wa.me/" + myPhoneNumber + "?text=" + msg, '_blank');
     }
 </script>
+
 </body>
 </html>
